@@ -8,13 +8,11 @@ Chapter1 - 시작하기
 ## Chapter1 - 예선 과제
 - String 타입의 새 인스턴스를 생성하고 인스턴스의 값을 본인의 이름으로 설정.
 - 생성한 인스턴스의 값을 콘솔로 출력하기
-<pre>
-<code>
+```swift
 //: Playground - noun: a place where people can play
 
 import Cocoa
 
 var str = "Hyunsik Yoo"
 print(str)
-</code>
-</pre>
+```
