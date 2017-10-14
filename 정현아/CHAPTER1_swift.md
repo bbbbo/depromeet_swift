@@ -8,7 +8,7 @@
 
 
 #### CODE
-```import Cocoa
+```swift
 
 var str = "hello, playground"
 str += "!"

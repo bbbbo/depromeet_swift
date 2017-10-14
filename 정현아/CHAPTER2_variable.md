@@ -1,15 +1,18 @@
 # CHAPTER2 / 타입 , 상수, 변수
+
 <br>
 <br>
+
 ## 타입
 - - -
 * 변수와 상수에는 데이터 타입이 있으며, 데이터 처리방식에 대한 정보를 컴파일러에 제공한다.
 * 변수에 엉뚱한 데이터 타입을 지정하지 않도록 **type checking** 기능을 제공한다.
 * ``변수명: type`` 과 같은 **타입 어노테이션** 문법을 사용하여 명시적 선언이 가능하다.
+
 <br>
 
 #### CODE
-```import UIKit
+```swift
 
 var numberOfStoplights = "Six"
 numberOfStoplights += 2
@@ -18,7 +21,7 @@ numberOfStoplights += 2
 위와 같은 경우 *String과 Int*로 다른 타입의 인스턴스기 때문에 Error가 발생한다.
 
 
-```import UIKit
+```swift
 
 var numberOfStoplights: Int = 6
 numberOfStoplights += 2
@@ -34,8 +37,9 @@ numberOfStoplights += 2
 * 항상 고정값인 인스턴스는 **상수(let)**, 가변적인 인스턴스는 **변수(var)** 로 선언한다.
 
 <br>
+
 ### CODE
-```import UIKit
+```swift
 
 let numberOfStoplights: Int = 6
 numberOfStoplights += 2
@@ -53,7 +57,7 @@ numberOfStoplights += 2
 
 ### CODE
 
-```import UIKit
+```swift
 
 let car: Int = 4
 let townName: String = "Seoul"
@@ -73,10 +77,9 @@ print(townDescription)
 
 - - -
 <br>
-<br>
-## Example
-```import UIKit
 
+## Example
+```swift
 let townName: String = "Seoul"
 var population: Int = 1004
 var  unemploymentRate: Int = 38

@@ -7,7 +7,7 @@
 * 문자열은 ``" "``안에 넣어 선언한다.
 * 문자들의 배열이다. 그러나 인덱스로 문자열에 접근할 수 없다.
  - 아래와 같은 방법으로 **구간추출**이 가능하다
-  ```
+  ```swift
   let sentence = "hyunah, Princess"
 let start = sentence.startIndex     //인덱스정보
 //출력: Index(_compoundOffset: 0, _cache: Swift.String.Index._Cache.utf16)
@@ -23,9 +23,7 @@ start 와 end에 인덱스 정보를 담고, 그것을 통해서 ``문자열변�
 
 
 ### CODE
-```
-import UIKit
-
+```swift
 var name = "hyuna"
 name += " jeong"
 print(name)   //출력: hyuna jeong

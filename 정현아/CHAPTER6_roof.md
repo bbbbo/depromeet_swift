@@ -1,4 +1,5 @@
 # CHAPTER6 / ROOF
+
 <br>
 <br>
 
@@ -12,7 +13,7 @@
 
 
 ### CODE
-```
+```swift
 var inning:Int = 0
 
 for i in 1...5 where i % 2 == 0{
@@ -32,7 +33,7 @@ for i in 1...5 where i % 2 == 0{
 * 조건을 잘 설정하여 *무한루프*에 빠지지 않도록 주의한다.
 
 ### CODE
-```
+```swift
 var i = 1
 while i < 6 {
     inning += 1
@@ -49,7 +50,7 @@ while i < 6 {
 * 적어도 **한 번 실행**하고 조건을 판단한다.
 
 ### CODE
-```
+```swift
 repeat {
     print("일어나")
 } while inning > 0

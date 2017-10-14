@@ -15,8 +15,8 @@
 <br>
 
 ### CODE
-```
-import UIKit
+
+```swift
 
 var age: Int = 26
 var message: String
@@ -42,9 +42,9 @@ print(message)
 * 복잡한 조건문은 if/else 문을 사용하는 것이 가독성이 좋다.
 
 <br>
+
 ### CODE
-```
-import UIKit
+```swift
 message = age <= 26 ?  "\(age)살은 아직 어립니다." : "\(age)살은 어른입니다."
 print(message)
 ```
@@ -58,10 +58,10 @@ print(message)
 * 다수의 조건을 판단할 경우 **switch** 혹은 **else if문**을 사용한다
 
 <br>
-### CODE
-```
-import UIKit
 
+### CODE
+
+```swift
 var age: Int = 45
 var message: String
 

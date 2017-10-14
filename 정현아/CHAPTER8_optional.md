@@ -1,4 +1,4 @@
-CHAPTER8 / Optional
+# CHAPTER8 / Optional
 <br>
 <br>
 
@@ -20,8 +20,7 @@ CHAPTER8 / Optional
 
 ### CODE
 
-```
-import UIKit
+```swift
 var yesOrNoString: String?
 yesOrNoString = "옵셔널"
 
@@ -32,8 +31,7 @@ yesOrNoString = "옵셔널"
 nil이 아니라면 `Optional("<string>")`과 같이 옵셔널에 쌓여 출력된다.
 
 
-```
-import UIKit
+```swift
 var yesOrNoString: String?
 //yesOrNoString = "옵셔널"
 
@@ -59,12 +57,35 @@ if yesOrNoString != nil {
 옵셔널에 값이 있다면 상수나 변수에 그 값을 지정할 수 있다.   
 값이 있다면 변수에 넣고 해당 변수로 코드를 실행할 수 있다.
 
-```
-import UIKit
+```swift
 var box : String? = "고양이"
 if let object  = box {
     print("\(object)가 들어있다")
 }else {
     print("nil이다")
 }
+```
+
+## 옵셔널 체이닝
+* 옵셔널에 값의 유무를 판단하는 할 수 있다.
+* 사슬처럼 연달아 이어서 조회할 수 있다.
+
+```swift
+var errorCodeString: String?
+errorCodeString = "404"
+var errorDescription: String?
+if let theError = errorCodeString, let errorCodeInteger = Int(theError),
+    errorCodeInteger == 404 {
+        errorDescription = "\(errorCodeInteger + 200): resource was not found."
+    }
+var upCaseErrorDescription = errorDescription?.uppercased()
+errorDescription
+```
+<br>
+
+## nil 결합 연산자
+* 옵셔널을 처리할 때는 값을 가져오거나 옵셔널이 nil일 때 기본값을 사용하는 것이 일반적이다.
+
+```swift
+let description = errorDescription ?? "No error"
 ```

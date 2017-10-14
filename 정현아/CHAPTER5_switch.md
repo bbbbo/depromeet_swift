@@ -1,4 +1,5 @@
 # CHAPTER5 / SWITCH
+
 <br>
 <br>
 
@@ -8,8 +9,7 @@ if/else는 조건을 boolean값으로만 판단했다면,
 switch는 특정 값에 따라 **경우의 수**를 나눠 판단한다.
 
 ### CODE
-```
-import UIKit
+```swift
 
 var message: String
 var food:String = "beef"
@@ -43,8 +43,7 @@ print(food)     //출력 : beef
 ## 값 바인딩
 - - -
 ### CODE
-```
-import UIKit
+```swift
 
 var message: String
 var food:String = "soil"
@@ -76,8 +75,7 @@ print(message)     //출력 : soil 는 존재하지 않는 음식입니다.
 - - -
 조건절에 where을 이용하여 조건절을 쓸 수 있다
 ### CODE
-```
-import UIKit
+```swift
 
 var message: String
 var food:String = "candy"
@@ -107,8 +105,7 @@ print(message)     //출력 : candy 는 존재하지 않는 음식입니다.
 * 튜플 요소에 이름을 붙일 수 있다.
 
 ### CODE
-```
-import UIKit
+```swift
 
 var message: String
 var food:String = "candy"
@@ -141,7 +138,8 @@ print(foodType.number)     //출력 : 3
 * swtich문의 default를 쓰지 않아도 되며, if문처럼 한가지 조건만 다루지 않아도 된다.
 
 ### CODE
-```
+
+```swift
 if case 2...10 = foodNumber, foodNumber < 5   {
     print("suitable !!")
 }
