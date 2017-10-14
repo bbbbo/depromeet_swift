@@ -170,7 +170,6 @@
 
 * 옵셔널 ?? 비옵셔널
 
-    ​
 
 * 옵셔널 바인딩을 사용하여 errorDescription 파싱하기
 
@@ -187,6 +186,4 @@
 
         let description = errorDescription ?? "No error"
     ​    
-
-
 
