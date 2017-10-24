@@ -26,10 +26,10 @@ print(str)
   
 + 예선과제
  string 타입의 새 인스턴스를 생성
- ~~~
- answer
- 
- ~~~
+```swift
+let name = "jslee"
+print(name)
+```
   
   ### chapter 2 타입, 상수, 변수
   
