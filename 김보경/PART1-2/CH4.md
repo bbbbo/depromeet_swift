@@ -16,15 +16,18 @@
 
 * 명시적 선언
 
-        let number: Int = 10
+    ~~~swift
+    let number: Int = 10  
+    ~~~
 
-  ​
 
 * 암묵적 선언
 
-        let number = 3  // 컴파일러가 추론한 Int 타입
+    ~~~swift
+    let number = 3  // 컴파일러가 추론한 Int 타입
+    ~~~
 
-
+    ​
 
 
 
@@ -50,10 +53,11 @@
 * 변환할 타입(변수 이름)
 
 
-        let a: Int16 = 200
-        let b: Int8 = 50
-        let c = a + Int16(b)
-
+```swift
+let a: Int16 = 200
+let b: Int8 = 50
+let c = a + Int16(b)
+```
 
 
 
@@ -70,18 +74,4 @@
 * Double은 Float보다 정확성이 더 높고 스위프트에서 부동소수점수의 기본 추론 타입
 
   => 부동소수점수로 정확하게 표현되지 않는다. (최근삿값을 저장)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

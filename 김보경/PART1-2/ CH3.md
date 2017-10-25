@@ -22,11 +22,14 @@
 
 ## 중첩된 if
 
-
-    if 조건 { ...
-    }else {
-        if 조건 … else
-    }
+```swift
+if 조건 { 
+  ...
+} 
+else {
+    if 조건 … else
+}
+```
 
 
 

@@ -19,7 +19,7 @@
 
 
 
- ### 유니코드 스칼라
+#### 유니코드 스칼라
 
  * 유니코드 표준의 특정 문자를 나타내는 21비트짜리 수
  * \u{16진수}
@@ -30,15 +30,16 @@
 
 
 
- ### 원형적 등가
+#### 원형적 등가
 
  * 두 개의 유니코드 스칼라가 의미상 동일하다
 
  * 언어적으로 동일한 의미를 가지고 동일하게 표현될 때 = 동일하다
-
-         let aAcute = "\u{0061}\u{0301}"
-         let aAcutePrecomposed = "\u{00E1}"     //미리 결합된 문자
-         let b = (aAcute == aAcutePrecomposed )     //참
+```swift
+let aAcute = "\u{0061}\u{0301}"
+let aAcutePrecomposed = "\u{00E1}"     //미리 결합된 문자
+let b = (aAcute == aAcutePrecomposed )     //참
+```
 
 
 * 구성하는 유니코드 스칼라는 동일하지 않아도 된다
@@ -46,14 +47,14 @@
 
 
 
-### 요소의 개수 세기
+#### 요소의 개수 세기
 
 * 변수이름.characters.count
 
 
 
 
-### 인덱스와 구간
+#### 인덱스와 구간
 
 * String.CharacterView.Index  -> 인덱스 추적
 
@@ -68,16 +69,18 @@
 
  * index(_:offsetBy:)
      * 시작점부터 원하는 위치까지 이동
+```swift
+let start = playgroud.startIndex   //첫번째 인덱스
+let end = playgroud.index(start, offsetBy: 4)
+let fifthCharacter = playgroud[end]    //5번째 문자 찾기
+```
 
-             let start = playgroud.startIndex   //첫번째 인덱스
-             let end = playgroud.index(start, offsetBy: 4)
-             let fifthCharacter = playgroud[end]    //5번째 문자 찾기
 
-         ​
 * 구간 뽑아내기
-
-         let range = start...end    //닫힌 구간 만들어짐
-         let firstFive = playgroud[range]
+```swift
+let range = start...end    //닫힌 구간 만들어짐
+let firstFive = playgroud[range]
+```
 
 
 

@@ -25,23 +25,25 @@
     ​
 
 * 옵셔널 타입 선언 및 출력하기
+```swift
+var errorCodeString: String?    //옵셔널 선언
+errorCodeString = " 404"    //주석처리하면 nil 출력
+print(errorCodeString)  //Optional("404")
+```
 
-        var errorCodeString: String?    //옵셔널 선언
-        errorCodeString = " 404"    //주석처리하면 nil 출력
-        print(errorCodeString)  //Optional("404")
 
-    ​
+
 
 * 강제 언래핑 : 값이 있다고 단정짓겠다는 의미
+```swift
+if errorCodeString != nil {
+    let theError = errorCodeString! //! = 강제언래핑
+    print(theError)
+}
+```
+옵셔널에 값이 없다면 런타임 오류 발생!
 
-        if errorCodeString != nil {
-            let theError = errorCodeString! //! = 강제언래핑
-            print(theError)
-        }
 
-    옵셔널에 값이 없다면 런타임 오류 발생!
-
-    ​
 * !를 없애면 옵셔널 String 값 출력 => Optional("404")
 
 * String?과 String은 다르다
@@ -55,27 +57,29 @@
 ## 옵셔널 바인딩
 
 * 어떤 옵셔널에 값이 있는지 판단할 수 있는 유용한 패턴
+```swift
+if let temporaryConstant = anOptional {
+        // tempotemporaryConstant로 어떤 일을 한다
+} else {
+        // ananOptional에는 값이 없다(nil)
+}
+```
 
-        if let temporaryConstant = anOptional {
-            // tempotemporaryConstant로 어떤 일을 한다
-        } else {
-            // ananOptional에는 값이 없다(nil)
-        }
-    ​
+
 
 * 옵셔널 바인딩 중첩하기
-
     * if let 바인딩 중첩
     * 코드 난해 가능성 (파멸의 피라미드)
     * 여러 옵셔널 언래핑하기
+```swift
+if let theError = errorCodeString, let errorCodeInteger = Int(the Error){
+        //if let errorCodeInteger = Int(theError) {
+            print("\(theError): \(errorCodeInteger)")
+        //}
+}
+```
 
-            if let theError = errorCodeString, let errorCodeInteger = Int(the Error){
-                //if let errorCodeInteger = Int(theError) {
-                print("\(theError): \(errorCodeInteger)")
-                //}
-            }
-
-        * 추가 판단은 쉼표(,) 하고 조건 쓰기
+* 추가 판단은 쉼표(,) 하고 조건 쓰기
 
 
 
@@ -86,25 +90,28 @@
 ## 암묵적으로 언래핑된 옵셔널
 
 * 따로 옵셔널을 언래핑하지 않고 그 값에 액세스할 수 있다
+```swift
+var errorCodeString: String!    // 암묵적언래핑을 나타내는!
+errorCodeString = "404"
+print(errorCodeString)
+```
 
-        var errorCodeString: String!    // 암묵적언래핑을 나타내는!
-        errorCodeString = "404"
-        print(errorCodeString)
-    ​
+
 
 * errorCodeString이 nil 일때
+```swift
+var errorCodeString: String! = nil404
+//errorCodeString = "404"
+//print(errorCodeString)
+let anotherErrorCodeString: String = errorCodeString
+let yetAnotherErrorCodeString = errorCodeString
+```
 
-    ```
-    var errorCodeString: String! = nil404
-    //errorCodeString = "404"
-    //print(errorCodeString)
-    let anotherErrorCodeString: String = errorCodeString
-    let yetAnotherErrorCodeString = errorCodeString
-    ```
+* anotherErrorCodeString이 동작할까?
+    * 함정에 빠진다 => 런타임 오류
+      why? 명시적으로 선언된 anotherErrorCodeString은 옵셔널이 될 수 없다
 
-    * anotherErrorCodeString이 동작할까?
-        * 함정에 빠진다 => 런타임 오류
-          why? 명시적으로 선언된 anotherErrorCodeString은 옵셔널이 될 수 없다
+      ​
 
     * yetAnotherErrorCodeString은 옵셔널? 암묵적 언래핑?
         * 옵셔널 (값이 nil인 String? 인스턴스)
@@ -130,21 +137,20 @@
       ​
 
 * 어떤 옵셔널 nil이면 nil 리턴
+```swift
+...
+var errorDescription: String?
+if let theError = errorCodeString, let errorCodeInteger = Int(theError),
+    errorCodeInteger == 404 {   //추가판단 (, 조건)
+    //print("\(theError): \(errorCodeString)")
+    errorDescription = "\(errorCodeInteger + 200): resource was not found."
+}
 
-    ```
-    ...
-    var errorDescription: String?
-    if let theError = errorCodeString, let errorCodeInteger = Int(theError),
-        errorCodeInteger == 404 {   //추가판단 (, 조건)
-        //print("\(theError): \(errorCodeString)")
-        errorDescription = "\(errorCodeInteger + 200): resource was not found."
-    }
+var upCaseErrorDescriprion = errorDescription?.uppercased() //? 옵셔널 체이닝 과정의 시작
+errorDescription    //값이 없으면 upupCaseErrorDescriprion은 nil로 설정
+```
 
-    var upCaseErrorDescriprion = errorDescription?.uppercased() //? 옵셔널 체이닝 과정의 시작
-    errorDescription    //값이 없으면 upupCaseErrorDescriprion은 nil로 설정
-    ```
-
-    => "604: RESOURCE WAS NOT FOUND."
+=> "604: RESOURCE WAS NOT FOUND."
 
 
 
@@ -156,10 +162,11 @@
 
 * 새 변수나 상수를 만들지 않아도 되도록 한다
 * append(_:) 메서드 호출
-
-        ...
-        upCaseErrorDescriprion?.append("please try again")  //?는 옵셔널 체이닝과 비슷하게 동작
-        upCaseErrorDescriprion
+```swift
+...
+upCaseErrorDescriprion?.append("please try again")  //?는 옵셔널 체이닝과 비슷하게 동작
+upCaseErrorDescriprion
+```
 
 
 
@@ -172,18 +179,20 @@
 
 
 * 옵셔널 바인딩을 사용하여 errorDescription 파싱하기
+```swift
+...
+let description: String
+if let errorDescription = errorDescription {
+    description = errorDescription
+} else {
+    description = "No error"
+}
+```
 
-        ...
-        let description: String
-        if let errorDescription = errorDescription {
-            description = errorDescription
-        } else {
-            description = "No error"
-        }
-    ​
+
 
 * nil 결합 연산자 사용하기
-
-        let description = errorDescription ?? "No error"
-    ​    
+```swift
+let description = errorDescription ?? "No error"
+```
 
