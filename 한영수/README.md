@@ -1,4 +1,5 @@
-## DeproMeet Swift study
+
+## DeProMeet Swift study
 
 #### WEAK1
 
@@ -140,3 +141,80 @@ print(errorCodeString) // Optional("404")
 
 `?` 이게 뭐지? 이렇게 옵셔널을 설정해 줄떄는 변수나 상수 뒤에 `?`를 적어줍니다
 `print(errorCodeString)`를 통해 로그를 보니 `Optional("404")`라는 이상한 걸 보여주네요
+
+
+그렇다면 다음처럼 errorCodeString을 주석 처리 해볼까요?
+
+```swift
+var errorCodeString: String?
+//errorCodeString = "404"
+print(errorCodeString) // Optional("404")
+```
+그럼 `nil`값을 보여줍니다.
+바로 errrCodeString이 `nil`값이 될 수 있음을 보여주는거죠
+
+이렇게 스위프트의 옵셔널은 안전정치 역할을 하는데, `nil`이 될 수 있는 인스턴스는 반드시 옵셔널 타입으로 선언해야합니다. 즉, 옵셔널이 적용되지 않은 인스턴스는 `nil`이 될 수 없다는거죠. 스위프트 컴파일러는 이런 틀에 따라 인스턴스가 `nil`이 될 수 있는지를 판단합니다. 개발자 입장에서는 인스턴스를 명시적으러 선언했기 때문에 코드의 독해력과 안정성을 높일 수 있죠.
+
+### 옵셔널 강제 언래핑(forced unwrapping)
+강제 언래핑을 적용하면 optional 인스턴스 값에 액세스(Access)할 수 있게 됩니다.
+다음 예제를 봅시다.
+
+```swift
+var errorCode: String?
+errorCode = "404"
+
+errorCode != nil ? print(errorCode!) : print(errorCode) // "404"
+```
+`!`를 optional인스턴스 뒤에 붙이게 되면 Optional이 없어지고 실징적인 "404" (string)값을 얻을 수 있습니다. 하지만 `!`강제 언래핑을 nil에다 적용하게 되면 예기치 않은 오류를 발생시키기 때문에 위의 코드처럼 nil인지 아닌지 먼저 체크하는 코드를 넣어주는게 바람직합니다^^
+
+### 옵셔널 체이닝(optional chaining)
+
+옵셔널 체이닝(Optional Chaining)이란 어떤 옵셔널 값이 체인처럼 물리고 물려있음을 의미합니다.
+
+다음 예제를 봅시다
+
+```swift
+var errCodeString: String?
+errCodeString = "404"
+var errDescription: String?
+
+if let theErr = errCodeString, let errorCodeInteger = Int(theErr),
+        errorCodeInteger == 404 {
+    
+    errDescription = "\(errorCodeInteger + 200): resource was not found"
+
+}
+
+var upCaseErrorDescription = errDescription?.uppercased()
+print(upCaseErrorDescription) // Optional("604: RESOURCE WAS NOT FOUND")
+
+```
+위의 코드에서 errorDescription에 붙은 ?는 이 코드 행이 옵셔널 체이닝 과정의 시작임을 알린다. errorDesctiption에 값이 없을 떄는 대문자로 변환할 문자가 없으므로 upCaseErrorDescription이 `nil`로 설정됩니다. 바로 이 시점이 옵셔널 체이닝에 따라 옵셔널이 리턴되는 시점이죠. `nil`이 리턴되든, `Optional("604: RESOURCE WAS NOT FOUND")`이 리턴 되든 결국 모두 optional인스턴스입니다.
+
+### nil결합 연산자 
+옵셔널을 처리 할때는 값을 가져오거나 옵셔널이 `nil`일 때 기본값을 사용하는 것이 일반적입니다.
+다음 코드를 보겠습니다.
+
+```swift
+let description: String
+if let errorDescription = errorDescription {
+	description = errorDescription
+} else {
+	description = "No error"
+}
+```
+위의코드처럼 `옵셔널 바인딩`을 사용해서 코드를 비교적 간결하게 줄일 수 있지만, 다음처럼 `nil결합 연산자`를 사용하면 더욱 코드를 더 짧게 줄일 수 있습니다<del>(가독성면에서는 잘 모르겠네요...)</del>
+
+```swift
+<!--let description: String-->
+<!--if let errorDescription = errorDescription {
+	description = errorDescription
+} else {
+	description = "No error"
+}-->
+let description = errorDescription ?? "No error"
+```
+`??`왼쪽에는 옵셔널 인스턴스가 오른쪽엔 비 옵셔널 인스턴스가 와야됩니다
+보시다시피 `??`왼쪽(옵셔널) 인스턴스가 nil이 아니라면 옵셔널이 리턴되고 nil이라면 오른쪽 인스턴스(비 옵셔널)가 리턴 되겠네요
+
+
