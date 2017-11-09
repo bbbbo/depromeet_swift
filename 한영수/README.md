@@ -1,11 +1,4 @@
-스위프트 공부 서적
-===
-<img src="http://image.kyobobook.co.kr/images/book/xlarge/937/x9791185890937.jpg" width="200">
-### 빅너드 랜치의 스위프트 프로그래밍
-매튜 마티아스 , 존 갤러거 지음 | 배장열 옮김 | 제이펍 |  
-=======
 
-## DeProMeet Swift study
 
 ## WEEK1
 
