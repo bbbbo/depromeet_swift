@@ -3,9 +3,6 @@
 <img src="http://image.kyobobook.co.kr/images/book/xlarge/937/x9791185890937.jpg" width="200">
 ### 빅너드 랜치의 스위프트 프로그래밍
 매튜 마티아스 , 존 갤러거 지음 | 배장열 옮김 | 제이펍 |  
-=======
-
-## DeProMeet Swift study
 
 ## WEEK1
 
@@ -380,4 +377,5 @@ movieRating["범죄와의 전쟁"] = nil
 제거는 위처럼 `removeValue(forKey:)`메서드를 사용하던가, 실제 key에 `nil`을 대입함으로써 값을 제거 할 수 있습니다.
 
 딕셔너리는 `루프`도 적용 가능합니다. 다음 예제를 볼까요
+
 
