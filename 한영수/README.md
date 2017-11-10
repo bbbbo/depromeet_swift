@@ -374,3 +374,106 @@ movieRating["범죄와의 전쟁"] = nil
 
 딕셔너리는 `루프`도 적용 가능합니다. 다음 예제를 볼까요
 
+```swift
+for (key,value) in movieRating {
+    print("the \(key) is rated \(value)")
+}
+
+/* 
+	the 디워 is rated 3.0
+	the 어벤져스3 is rated 9.9
+	the 범죄도시 is rated 9.0
+*/
+
+```
+이처럼 `튜플`을 이용해서 key와 value값을 한꺼번에 가져올 수 있네요.
+만일 key만 가져오고 싶다면 이렇게 하면됩니다.
+
+```swift
+for key in movieRating.keys{
+    print(key)
+}
+
+/*
+	디워
+	어벤져스3
+	범죄도시
+*/
+
+```
+
+추가적으로 만일 딕셔너리를 한번 선언하고 데이터를 변경(추가/삭제)하지 못하도록 하려면 역시 `let`으로 변수를 선언 해 주면 된다고 하네요.
+
+딕셔너리에 있는 데이터를 배열로 활용 하고 싶을때도 있을텐데요
+그때는 다음처럼 `Array()`문법을 이용해서 배열 인스턴스를 생성하는게 좋습니다.
+
+```swift
+let watchedMovies = Array(movieRating.keys)
+let ratings = Array(movieRating.values)
+print(watchedMovies) // ["디워", "어벤져스3", "범죄도시"]
+print(ratings) // [3.0, 9.9, 9.0]
+
+```
+
+### 집합
+사실 집합 `Set`은 코딩하면서 잘 쓰이지 않는다고 하네요. 그래도 고유한 장점이 있다고 하니 살펴봅시다. `Set`은 우리말로 **집합**이죠 __집합안에 데이터는 순서대로 저장되지 않고, 중복되는 값도 들어갈 수 없습니다.__
+이제 슬슬 헷갈리니 표로 한번 정리해보죠
+
+>스위프트의 각종 컬렉션 비교
+
+|__컬렉션타입__|__순서 여부__|__고유 여부__ |__저장 대상__ |
+|-----------|-----------|----------- |-----------|
+| `배열`     | 있음       | 없음        | 요소        |
+| `딕셔너리`  | 없음       | 키         | 키-값 쌍     |
+| `집합`     | 없음       | 요소       | 요소        |
+
+`Set`인스턴스는 다음과 같이 생성합니다
+
+```swift
+var groceryBag = Set<String>()
+
+```
+인스턴스가 생성된 다음에는 `insert(_:)`메소드를 이용해서 요소를 추가 할 수 있죠
+
+```swift
+var groceryBag = Set<String>()
+groceryBag.insert("Apples")
+groceryBag.insert("Orange")
+groceryBag.insert("Pineaapple")
+print(groceryBag) // ["Orange", "Apples", "Pineaapple"]
+
+```
+위 코드를 보면 저장한대로 데이터가 출력되지 않는 걸 볼 수 있네요  
+한가지 더 확인 할 것이 있습니다.
+
+```swift
+var groceryBag = Set<String>()
+let resultTp = groceryBag.insert("Apples")
+print(resultTp) 
+// (inserted: true, memberAfterInsert: "Apples")
+
+```
+위의 결과처럼 `insert(_:)`를 실행하면 `튜플`값을 리턴하는데요 집합에 올바로 삽입되었음을 알리는 불리언입니다. 이렇게 담긴 데이터 역시 `for-in`문을 이용해서 순회할 수 있습니다.
+
+위의 코드는 다음처럼 쉽게 바꿀 수도 있습니다.
+
+```swift
+var groceryBag = Set(["Apples", "Orange", "Pineapple"])
+// 또는!!!
+var groceryBag: Set = ["Apples", "Orange", "Pineapple"]
+
+for food in groceryBag {
+    print(food)
+}
+/*
+	Pineapple
+	Orange
+	Apples
+*/
+```
+위의코드를 보면 `Array` 인스턴스 생성을 통해 `Set`인스턴스를 생성하는 것을 볼 수 있습니다.
+이런식으로 번거로운 반복코드를 줄일 수 있겠네요  
+이런식으로 리터럴 문법으로 인스턴스를 생성하는 건 `스위프트3.0`에서는 안된다고 하네요. 혹시 컴파일 에러가 생긴다면 스위프트 버전을 확인해보세요
+
+`Set`인스턴스를 생성했으니 요소들을 어떻게 다룰 수 있는지 알아봅시다.
+
