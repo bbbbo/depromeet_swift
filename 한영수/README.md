@@ -477,3 +477,44 @@ for food in groceryBag {
 
 `Set`인스턴스를 생성했으니 요소들을 어떻게 다룰 수 있는지 알아봅시다.
 
+먼저 `contains(_:)`라는 메서드를 이용해서 특정 항목이 인스턴스에 들어있는지 체크 할 수 있습니다.
+
+```swift
+var groceryBag: Set = ["Apples", "Orange", "Pineapple"]
+
+for food in groceryBag {
+    print(food)
+}
+let hasBanana = groceryBag.contains("Banana") // false 
+
+```
+
+`Set`은 우리가 중 고등학교때 배웠던 집합의 개념과 같습니다. 우선 합집합 `union`의 개념을 알아보죠
+
+```swift
+let groceryBag: Set = ["Apples", "Orange", "Pineapple"]
+let friendsGroceryBag = Set(["Banana","creal","Orange","Milk"])
+let commonGroceryBag = groceryBag.union(friendsGroceryBag)
+
+// {"Pineapple", "Milk", "Banana", "Orange", "Apples", "creal"}
+```
+
+위의 코드를 보면 우리가 알던 합집합 처럼 중복되는 값을 한번만 저장 하는 것을 알 수 있네요
+
+다음은 교집합입니다. swift에서는 `intersection(_:)` 메서드를 통해 교집합을 구성할 수 있네요
+
+```swift
+
+let groceryBag: Set = ["Apples", "Orange", "Pineapple"]
+let friendsGroceryBag = Set(["Banana","creal","Orange","Milk"])
+
+let commonGroceryBag = groceryBag.union(friendsGroceryBag)
+let roomMateGroceryBag = Set(["Pineapple","Milk","Creal","ToothPaste"])
+
+let commonItem = commonGroceryBag.intersection(roomMateGroceryBag)
+// {"Pineapple", "Milk"}
+```
+
+위를 보시면 공통되는 원소만 리턴되는 것을 확인 할 수 있습니다. 주의 할 점은 `String`타입 원소의 경우 대소문자를 구분 한다는 것이네요.
+
+
